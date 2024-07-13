@@ -37,6 +37,20 @@ set -gx EDITOR nvim
 ~/.local/bin/mise activate fish | source
 mise activate fish | source
 
+# rubygem PATH
+export PATH="$HOME/.local/share:$PATH"
+
+# rubygem PATH end
+
 # diff in kitten
 alias d="kitten diff"
 # diff end
+
+# pnpm
+set -gx PNPM_HOME /Users/agpone/Library/pnpm
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end
+
+# composer
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+# composer end
