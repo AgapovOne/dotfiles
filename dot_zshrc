@@ -87,6 +87,14 @@ alias be="bundle exec"
 alias ms="make sync"
 alias mpic="make pod install CLEAN=YES"
 
+# editor
+export EDITOR=nvim
+# editor end
+
+# diff in kitten
+alias d="kitten diff"
+# diff end
+
 # Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
 
