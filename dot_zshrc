@@ -84,12 +84,14 @@ alias la="eza --all"
 alias ll="eza -l"
 alias gg="lazygit"
 alias be="bundle exec"
+alias love="/Applications/love.app/Contents/MacOS/love"
+
 # alias aviasales
 alias ms="make sync"
-alias mpic="make pod_install CLEAN=YES"
+alias mpi="make pod_install"
 
 # editor
-export EDITOR=nvim
+export EDITOR=zed
 # editor end
 
 # diff in kitten
@@ -104,3 +106,4 @@ precmd () {print -Pn "\e]0;%~\a"}
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+eval "$(uv generate-shell-completion zsh)"
