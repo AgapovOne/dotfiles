@@ -1,5 +1,6 @@
 # Amazon Q pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -83,24 +84,13 @@ alias ls=eza
 alias la="eza --all"
 alias ll="eza -l"
 alias gg="lazygit"
-alias be="bundle exec"
-alias love="/Applications/love.app/Contents/MacOS/love"
-
-# alias aviasales
-alias ms="make sync"
-alias mpi="make pod_install"
 
 # editor
 export EDITOR=zed
 # editor end
 
-# diff in kitten
-alias d="kitten diff"
-# diff end
-
 precmd () {print -Pn "\e]0;%~\a"}
 
-# Q post block. Keep at the bottom of this file.
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -108,31 +98,4 @@ precmd () {print -Pn "\e]0;%~\a"}
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
 eval "$(uv generate-shell-completion zsh)"
 
-# Aviasales make autocompletion based on help output
-
-autoload -Uz compinit
-compinit
-_makefile_targets_from_help() {
-    if [[ ! -f Makefile ]]; then
-        return
-    fi
-    if ! make help &>/dev/null; then
-        return
-    fi
-    local help_output=$(make help)
-    local targets=()
-    local descriptions=()
-    while IFS= read -r line; do
-        if [[ $line =~ ^[[:space:]]{2}([a-z0-9_]+)([[:space:]]-[[:space:]](.*))?$ ]]; then
-            targets+=("${match[1]}")
-            if [[ -n ${match[3]} ]]; then
-                descriptions+=("${match[1]} - ${match[3]}")
-            else
-                descriptions+=("${match[1]}")
-            fi
-        fi
-    done <<< "$help_output"
-    compadd -d descriptions -a targets
-}
-compdef _makefile_targets_from_help make
-
+zmodload zsh/zprof
