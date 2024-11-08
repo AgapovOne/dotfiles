@@ -107,3 +107,32 @@ precmd () {print -Pn "\e]0;%~\a"}
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
 eval "$(uv generate-shell-completion zsh)"
+
+# Aviasales make autocompletion based on help output
+
+autoload -Uz compinit
+compinit
+_makefile_targets_from_help() {
+    if [[ ! -f Makefile ]]; then
+        return
+    fi
+    if ! make help &>/dev/null; then
+        return
+    fi
+    local help_output=$(make help)
+    local targets=()
+    local descriptions=()
+    while IFS= read -r line; do
+        if [[ $line =~ ^[[:space:]]{2}([a-z0-9_]+)([[:space:]]-[[:space:]](.*))?$ ]]; then
+            targets+=("${match[1]}")
+            if [[ -n ${match[3]} ]]; then
+                descriptions+=("${match[1]} - ${match[3]}")
+            else
+                descriptions+=("${match[1]}")
+            fi
+        fi
+    done <<< "$help_output"
+    compadd -d descriptions -a targets
+}
+compdef _makefile_targets_from_help make
+
