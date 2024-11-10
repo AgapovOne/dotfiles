@@ -9,9 +9,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Q pre block. Keep at the top of this file.
-export PATH="$(brew --prefix)/opt/ruby/bin:$(brew --prefix)/lib/ruby/gems/3.0.0/bin:$PATH"
-export LDFLAGS="-L$(brew --prefix)/opt/ruby/lib"
-export CPPFLAGS="-I$(brew --prefix)/opt/ruby/include"
+# export PATH="$(brew --prefix)/opt/ruby/bin:$(brew --prefix)/lib/ruby/gems/3.0.0/bin:$PATH"
+# export LDFLAGS="-L$(brew --prefix)/opt/ruby/lib"
+# export CPPFLAGS="-I$(brew --prefix)/opt/ruby/include"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 ### Added by Zinit's installer
@@ -54,9 +54,9 @@ zinit light Aloxaf/fzf-tab
 eval "$(zoxide init zsh)"
 
 # Keybindings
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
+# bindkey '^p' history-search-backward
+# bindkey '^n' history-search-forward
+# bindkey '^[w' kill-region
 
 # History
 HISTSIZE=5000
