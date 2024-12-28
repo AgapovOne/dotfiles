@@ -1,0 +1,15 @@
+theme = catppuccin-macchiato
+
+font-family = "MonoLisa Nerd Font Mono"
+
+font-style = Regular
+font-style-bold = Bold
+font-style-italic = Italic
+font-style-bold-italic = Bold Italic
+
+font-feature = ss08
+font-feature = ss02
+
+adjust-cell-height = 20
+adjust-cursor-height = 12
+adjust-box-thickness = -1
